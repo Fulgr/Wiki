@@ -14,9 +14,6 @@ class EditWiki extends Component
 
     public function save()
     {
-        if (empty($this->comment)) {
-            return;
-        }
         $article = $this->article;
         $length = $article->content;
         if ($this->content == "") {
