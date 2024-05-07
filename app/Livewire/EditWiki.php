@@ -10,9 +10,13 @@ class EditWiki extends Component
 {
     public $article;
     public $content;
+    public $comment;
 
     public function save()
     {
+        if (empty($this->comment)) {
+            return;
+        }
         $article = $this->article;
         $length = $article->content;
         if ($this->content == "") {
@@ -21,11 +25,13 @@ class EditWiki extends Component
         $article->content = $this->content;
         $article->save();
         $edit = new Edit();
+        $edit->content = $this->comment;
         $edit->user_id = auth()->id();
         $edit->article_id = $article->id;
         $edit->diff = strlen($this->content) - strlen($length);
         $edit->save();
         $this->article = $article;
+        return redirect()->to('/wiki/'.$article->slug);
     }
 
     public function mount()

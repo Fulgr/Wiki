@@ -12,12 +12,13 @@
                 <div class="edit-header">
                     <div class="edit-info">
                         <span class="edit-author">{{$edit->user->name}}</span>
-                        <span class="edit-date">{{$edit->created_at->diffForHumans()}}</span>
-                        @if($edit->diff > 0)
+                        <span class="edit-date">&emsp;{{$edit->created_at->diffForHumans()}}&emsp;</span>
+                        @if($edit->diff >= 0)
                             <span class="edit-diff-positive">+{{$edit->diff}}</span>
-                        @elseif($edit->diff < 0)
+                        @else
                             <span class="edit-diff-negative">{{$edit->diff}}</span>
                         @endif
+                        <span>&emsp;{{$edit->content}}</span>
                     </div>
                 </div>
             </div>

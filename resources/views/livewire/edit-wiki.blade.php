@@ -10,6 +10,7 @@
         <div class="textarea-content">
             <textarea wire:model="content"></textarea>
         </div>
+        <input wire:model="comment" type="text">
         <button wire:click="save">Save</button>
     </div class="sidebar"></div>
 </div>
