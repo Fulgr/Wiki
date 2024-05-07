@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Edit extends Model
 {
     use HasFactory;
+
+    public function article()
+    {
+        return $this->belongsTo(Article::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

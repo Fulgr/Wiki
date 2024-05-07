@@ -5,7 +5,7 @@
         <div class="links">
             <a href="{{route('wiki', $article->slug)}}">Article</a>
             <a href="{{route('wiki.edit', $article->slug)}}" class="current-page">Source</a>
-            <a href="">History</a>
+            <a href="{{route('wiki.history', $article->slug)}}">History</a>
         </div>
         <div class="textarea-content">
             <textarea wire:model="content"></textarea>

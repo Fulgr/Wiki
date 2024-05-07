@@ -14,12 +14,16 @@ class EditWiki extends Component
     public function save()
     {
         $article = $this->article;
+        $length = $article->content;
+        if ($this->content == "") {
+            $this->content = "This article is empty you can help expanding it <a href='/wiki/".$article->slug."/edit'>here</a>.";
+        }
         $article->content = $this->content;
         $article->save();
         $edit = new Edit();
         $edit->user_id = auth()->id();
         $edit->article_id = $article->id;
-        $edit->diff = strlen($this->content) - strlen($this->article->content);
+        $edit->diff = strlen($this->content) - strlen($length);
         $edit->save();
         $this->article = $article;
     }

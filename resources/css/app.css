@@ -59,8 +59,21 @@ textarea{
     height: 70vh;
     width: 100%;
 }
+
 pre{
     white-space: pre-wrap;
+}
+
+.edit-author{
+    font-weight: bold;
+}
+
+.edit-diff-positive{
+    color: green;
+}
+
+.edit-diff-negative{
+    color: red;
 }
 
 .wiki-content{

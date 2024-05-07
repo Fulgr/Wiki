@@ -7,6 +7,9 @@ Route::view('/', 'welcome')->name('home');
 Route::view('wiki/{slug}', 'wiki/show')
     ->name('wiki');
 
+Route::view('wiki/{slug}/history', 'wiki/history')
+    ->name('wiki.history');
+
 Route::middleware(['auth'])->group(function () {
     Route::view('profile', 'profile')
         ->name('profile');
