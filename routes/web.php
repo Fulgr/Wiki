@@ -2,14 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('home');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::view('wiki/{slug}', 'wiki/show')
+    ->name('wiki');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+Route::middleware(['auth'])->group(function () {
+    Route::view('profile', 'profile')
+        ->name('profile');
+
+    Route::view('/profile', 'profile')
+        ->name('profile');
+
+    Route::view('wiki/{slug}/edit', 'wiki/edit')
+        ->name('wiki.edit');
+});
 
 require __DIR__.'/auth.php';
