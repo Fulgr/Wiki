@@ -13,6 +13,9 @@ class ShowWiki extends Component
     {
         $slug = request()->route('slug');
         $this->article = Article::where('slug', $slug)->first();
+        if (empty($this->article)) {
+            return redirect()->to('/');
+        }
         $this->article->views += 1;
         $this->article->save();
     }

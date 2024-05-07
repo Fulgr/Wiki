@@ -15,6 +15,9 @@ class History extends Component
     {
         $slug = request()->route('slug');
         $this->article = Article::where('slug', $slug)->first();
+        if (empty($this->article)) {
+            return redirect()->to('/');
+        }
         $this->edits = $this->article->edits->sortByDesc('created_at');
     }
 
