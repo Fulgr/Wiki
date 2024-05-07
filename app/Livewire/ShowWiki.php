@@ -13,6 +13,8 @@ class ShowWiki extends Component
     {
         $slug = request()->route('slug');
         $this->article = Article::where('slug', $slug)->first();
+        $this->article->views += 1;
+        $this->article->save();
     }
 
     public function render()
