@@ -13,7 +13,7 @@
         <livewire:search-bar/>
     </header>
     <main>
-        <p>Footer</p>
+        <p>&copy;{{$_ENV['APP_NAME']}}</p>
     </main>
     <footer>
     </footer>

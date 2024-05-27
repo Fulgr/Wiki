@@ -1,5 +1,5 @@
 <div>
-    <input type="text" wire:model="searchQuery" placeholder="Search..." class="search-bar">
+    <input type="text" wire:model="searchQuery" placeholder="Search..." class="search-bar" wire:keydown="search">
     <button wire:click="search" class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
     @foreach($articles as $article)
         <a class="article" href="/wiki/{{$article->slug}}">

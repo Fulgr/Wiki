@@ -2,22 +2,28 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\Article;
+use Livewire\Component;
 
 class SearchBar extends Component
 {
     public $articles;
+
+    public $allArticles;
+
     public $searchQuery;
 
     public function search()
     {
-        $this->articles = Article::where('title', 'like', '%' . $this->searchQuery . '%')->orderBy('views', 'desc')->take(5)->get();
+        $this->articles = $this->allArticles->filter(function ($article) {
+            return str_contains(strtolower($article->title), strtolower($this->searchQuery));
+        })->take(10);
     }
 
     public function mount()
     {
-        $this->articles = Article::orderBy('views', 'desc')->take(5)->get();
+        $this->allArticles = Article::orderBy('views', 'desc')->get();
+        $this->articles = $this->allArticles->take(10);
     }
 
     public function render()
